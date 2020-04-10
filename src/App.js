@@ -3,9 +3,13 @@ import { Switch, Route } from 'react-router-dom';
 import Contact from './components/Contact';
 import Home from './components/Home';
 import About from './components/About';
+import Login from './components/Login';
 import Header from './layout/Header';
 import logo from './logo.svg';
 import './App.css';
+
+
+
 
 function App() {
   const [data, SetData] = useState([]);
@@ -27,6 +31,7 @@ function App() {
         <Route path="/home" component={Home} />
         <Route path="/about" component={About} />
         <Route path="/contact" component={Contact} />
+        <Route path="/login" component={Login} />
       </Switch>
       {/* <p> <Main/> </p>
       <header className="App-header">
