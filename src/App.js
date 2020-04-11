@@ -15,8 +15,16 @@ function App() {
   const [data, SetData] = useState([]);
 
    const getPlaces = async () => {
-    const records = await fetch("http://localhost:3000/miejsca")
-   .then(res => res.json());
+    const records = await fetch("http://localhost:3000/miejsca", {
+      method: 'GET',
+      credentials: 'include',
+      withCredentials: true,
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    })
+.then(res => res.json());
    SetData(records);
   }
 
@@ -51,6 +59,7 @@ function App() {
           <p key={r.miejsce_id}>{r.miejsce_id} {r.sala_id} {r.fotele_id}</p>
         )) : 'no data'}
       </header> */}
+      
       
     </div>
   );
