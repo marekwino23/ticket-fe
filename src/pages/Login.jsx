@@ -1,26 +1,41 @@
 import React, { useState } from 'react';
-
-const API = 'http://localhost:8000';
+import { useHistory } from 'react-router-dom';
 
 const Login = () =>{   
+
 const [email, setEmail] = useState('');
 const [password, setPassword] = useState('');
+const [loading, setLoading] = useState(false);
+const [error, setError] = useState('');
+
+const history = useHistory();
+
 const onChange = ({ target }) => {
   target.name === "email" ? setEmail(target.value) : setPassword(target.value);
 }
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch(`${API}/login`, {
+    let res;
+    try {
+      setLoading(true);
+    res = await fetch(`${process.env.REACT_APP_API}/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ email, password })
     });
-    console.log('res');
+    setLoading(false);
+    console.log('res: ', res);
+    if(res.status > 300 ) return;
+    history.push('/home');
+    } catch(error) {
+      setError(error.message);
+    }
   }
 
+  if(loading && !error) return <div>loading...</div>
  return(
 <div>
 <form onSubmit={onSubmit}>

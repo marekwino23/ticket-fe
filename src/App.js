@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Contact from './components/Contact';
-import Home from './components/Home';
-import About from './components/About';
-import Login from './components/Login';
+import PrivateRoute from './components/PrivateRoute';
+import Contact from './pages/Contact';
+import Home from './pages/Home';
+import About from './pages/About';
+import Login from './pages/Login';
 import Header from './layout/Header';
 import logo from './logo.svg';
 import './App.css';
@@ -12,34 +13,15 @@ import './App.css';
 
 
 function App() {
-  const [data, SetData] = useState([]);
 
-   const getPlaces = async () => {
-    const records = await fetch("http://localhost:3000/miejsca", {
-      method: 'GET',
-      credentials: 'include',
-      withCredentials: true,
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      }
-    })
-.then(res => res.json());
-   SetData(records);
-  }
-
-  useEffect(() => {
-    getPlaces();
-  }, [])
-  console.log('data: ', data);
   return (
     <div className="App">
       <Header />
       <Switch>
-        <Route path="/home" component={Home} />
-        <Route path="/about" component={About} />
-        <Route path="/contact" component={Contact} />
         <Route path="/login" component={Login} />
+        <PrivateRoute path="/home" component={Home} />
+        <PrivateRoute path="/about" component={About} />
+        <PrivateRoute path="/contact" component={Contact} />
       </Switch>
       {/* <p> <Main/> </p>
       <header className="App-header">

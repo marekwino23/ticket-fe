@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Contact from '../components/Contact';
-import Home from '../components/Home';
-import About from '../components/About';
-import Login from '../components/Login';
+import Contact from '../pages/Contact';
+import Home from '../pages/Home';
+import About from '../pages/About';
+import Login from '../pages/Login';
 import obrazek from '../bars-solid.svg';
 
 
