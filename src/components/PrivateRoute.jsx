@@ -7,6 +7,7 @@ const PrivateRoute = ({ path, component: Component }) => {
         try {
             res = await fetch(`${process.env.REACT_APP_API}/verify`, {
             method: 'POST',
+            mode: 'cors',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
@@ -23,11 +24,11 @@ const PrivateRoute = ({ path, component: Component }) => {
     };
 
     const location = useLocation();
-    const [loggedIn, setLoggedIn] = useState(false);
+    const [loggedIn, setLoggedIn] = useState(true);
 
-    useEffect(() => {
-        verifyToken();
-    }, [location]);
+    // useEffect(() => {
+    //     verifyToken();
+    // }, [location]);
 
     console.log('path: ', path, loggedIn);
 
