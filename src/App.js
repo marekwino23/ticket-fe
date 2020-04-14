@@ -5,9 +5,10 @@ import Contact from './pages/Contact';
 import Home from './pages/Home';
 import About from './pages/About';
 import Login from './pages/Login';
+import Register from './pages/Register';
 import Header from './layout/Header';
 import logo from './logo.svg';
-import './App.css';
+import './App.css'
 
 
 
@@ -19,6 +20,7 @@ function App() {
       <Header />
       <Switch>
         <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
         <PrivateRoute path="/home" component={Home} />
         <PrivateRoute path="/about" component={About} />
         <PrivateRoute path="/contact" component={Contact} />
@@ -46,5 +48,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;

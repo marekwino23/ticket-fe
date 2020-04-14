@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import foto from '../logo.png';
 
 const Home = () => {
     const [data, SetData] = useState([]);
@@ -24,6 +25,7 @@ const Home = () => {
  return(
 <div>
     <h1> To jest strona główna </h1>
+    <img src={foto}></img>
     </div>
 
  )

@@ -39,11 +39,10 @@ const onChange = ({ target }) => {
  return(
 <div>
 <form onSubmit={onSubmit}>
-  <div>
+  <h1>Logowanie</h1>
   <label> Podaj Emaila:
   <input name="email" value={email} onChange={onChange} type="text"/>
   </label>
-  </div>
   <div>
   <label> Podaj Hasło:
   <input name="password" value={password} onChange={onChange} type="text"/>
@@ -51,7 +50,6 @@ const onChange = ({ target }) => {
   </div>
   <button>Log in</button>
 </form>
-
     </div>
 
  )
