@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import foto from '../logo.png';
+import cogoToast from 'cogo-toast';
 
 const Home = () => {
     const [data, SetData] = useState([]);
@@ -23,11 +24,12 @@ const Home = () => {
   }, []);
 
  return(
+  cogoToast.info(
 <div>
     <h1> To jest strona główna </h1>
     <img src={foto}></img>
     </div>
-
+  )
  )
 }
 export default Home;
