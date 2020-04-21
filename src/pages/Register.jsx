@@ -33,9 +33,11 @@ const Register = () =>{
       setLoading(false);
       console.log('res: ', res);
       if(res.status > 300 ) return;
-      res.status.contains('successfully') && cogoToast.success('user was successfully creaed. You can now log in', {
+      const data = await res.json();
+      data.status === 'success' && cogoToast.success('user was successfully creaed. You can now log in', {
         timeout: 500
       });
+      sessionStorage.setItem('loggedIn', true);
       history.push('/login');
       } catch(error) {
         setError(error.message);
