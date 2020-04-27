@@ -51,7 +51,7 @@ const Register = () =>{
    return(
     <div>
     <form onSubmit={onSubmit}>
-    <label>Podaj Imie i Nazwisko:
+    <label>Podaj Nickname:
        <input name="name" value={name} onChange={onChange} type="text"/>
       </label>
       <label>Podaj Emaila:

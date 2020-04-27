@@ -12,9 +12,9 @@ const Header = () => {
                 <li> <StyledLink to="/home" > Sprawdz Repertuar </StyledLink> </li>
                 <li> <StyledLink to="/about" > Zarezerwuj Bilet </StyledLink> </li>
                 <li> <StyledLink to="/contact" > Panel Lojalnościowy </StyledLink> </li>
-            { !loggedIn &&  <ListItem><StyledLink to="/login" > Zaloguj sie </StyledLink> </ListItem>}
-            { loggedIn && <ListItem><StyledLink to="/logout" > Wyloguj sie </StyledLink> </ListItem> }
-            { !loggedIn && <ListItem><StyledLink to="/register" > Zarejestruj sie </StyledLink></ListItem>}
+            { loggedIn &&  <ListItem><StyledLink to="/login" > Zaloguj sie </StyledLink> </ListItem>}
+            { !loggedIn && <ListItem><StyledLink to="/logout" > Wyloguj sie </StyledLink> </ListItem> }
+            { loggedIn && <ListItem><StyledLink to="/register" > Zarejestruj sie </StyledLink></ListItem>}
            </List>
         </nav>
     )
