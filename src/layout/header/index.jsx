@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import obrazek from '../home-solid.svg';
+import obrazek from '../../home-solid.svg';
 import styled from 'styled-components';
+
+
 
 const Header = () => {
     const loggedIn = sessionStorage.getItem('loggedIn');
@@ -12,15 +14,16 @@ const Header = () => {
                 <li> <StyledLink to="/home" > Sprawdz Repertuar </StyledLink> </li>
                 <li> <StyledLink to="/about" > Zarezerwuj Bilet </StyledLink> </li>
                 <li> <StyledLink to="/contact" > Panel Lojalnościowy </StyledLink> </li>
-            { loggedIn &&  <ListItem><StyledLink to="/login" > Zaloguj sie </StyledLink> </ListItem>}
-            { !loggedIn && <ListItem><StyledLink to="/logout" > Wyloguj sie </StyledLink> </ListItem> }
-            { loggedIn && <ListItem><StyledLink to="/register" > Zarejestruj sie </StyledLink></ListItem>}
+            { !loggedIn &&  <ListItem><StyledLink to="/login" > Zaloguj sie </StyledLink> </ListItem>}
+            { loggedIn && <ListItem><StyledLink to="/logout" > Wyloguj sie </StyledLink> </ListItem> }
+            { !loggedIn && <ListItem><StyledLink to="/register" > Zarejestruj sie </StyledLink></ListItem>}
            </List>
         </nav>
     )
 }
 
 const List = styled.ul`
+    background-color: #349bf3;
     display: flex;
     align-items: center;
     padding: 1rem 0;

@@ -6,11 +6,9 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import Header from './layout/Header';
+import Header from './layout/header';
 import logo from './logo.svg';
 import './App.css'
-
-
 
 
 function App() {

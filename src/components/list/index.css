@@ -1,0 +1,52 @@
+.list {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: stretch;
+    flex-direction: row;
+}
+
+.list__item {
+  background-color: #ccc;
+  width: 200px;
+  height: 200px;
+  margin: 10px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: whitesmoke;
+  filter: grayscale();
+  box-shadow: 1px -1px 10px #202020;
+  clip-path: ellipse(60px at center);
+}
+
+.list__item:hover {
+    cursor: pointer;
+    filter: saturate();
+}
+
+.list__item--1 {
+    background-image: linear-gradient(to right, rgba(25,180,255, .4), rgba(25,180,160, .2)), url('../../Batman.jpg');
+}
+
+.list__item--2 {
+    background-image: url('../../Superman.jpg');
+}
+
+.list__item--3 {
+    background-image: url('../../spider.jpg');
+}
+
+.list__item--4 {
+    background-image: url('../../xmen.jpg');
+}
+
+.list__item--5 {
+    background-image: url('../../avegers.jpg');
+}
+
+.list__item--6 {
+    background-image: url('../../avatar.jpg');
+}
