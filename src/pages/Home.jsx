@@ -1,8 +1,12 @@
 import React, {useState, useEffect, useMemo } from 'react';
-import foto from '../logo.png';
 import cogoToast from 'cogo-toast';
+import batman from '../batman.jpg';
+import avatar from '../avatar.jpg';
+import avengers from '../avengers.jpg';
+import spiderman from '../spiderman.jpg';
+import superman from '../superman.jpg';
+import xmen from '../xmen.jpg';
 import obrazek from '../search-solid.svg';
-import photo from '../Batman.jpg';
 import List from '../components/list'
 import SearchBar from '../components/SearchBar';
 
@@ -26,7 +30,13 @@ import SearchBar from '../components/SearchBar';
 // )
 // };
 
-const movies = [{ id: 1, name: 'Batman', src : {photo}}, { id: 2, name: 'Superman' }, { id: 3, name: 'Spiderman' }, { id: 4, name : 'X-men' }, {id: 5, name: 'Avengers'}, {id: 6, name: "Avatar"} ];
+const movies = [
+  { id: 1, name: 'Batman', desc: "Batman, z pomocą porucznika Gordona oraz prokuratora Harveya Denta, występuje przeciwko przerażającemu i nieobliczalnemu Jokerowi, który chce pogrążyć Gotham City w chaosie.", src: batman  }, 
+  { id: 2, name: 'Superman', desc: "Po latach nieobecności Superman wraca na Ziemię, by ocalić ludzkość i pokrzyżować plany Lexa Luthora.", src: superman }, 
+  { id: 3, name: 'Spiderman', desc: "Hero moving like spider", src: spiderman }, 
+  { id: 4, name : 'X-men', desc: "Hero having sharp claves", src: xmen }, 
+  {id: 5, name: 'Avengers', desc: "Hero who will avenge", src: avengers }, 
+  {id: 6, name: "Avatar", desc: "Hero who bends all elements of nature", src: avatar } ];
 console.log(movies.src)
 const Home = () => {
     const [data, setData] = useState([]);
@@ -36,11 +46,10 @@ const Home = () => {
       return term.length ? movies.filter(movie => movie.name.toLowerCase().startsWith(term) ) : movies;
     });
 
-   const getPlaces = async () => {
-    const records = await fetch(`${process.env.REACT_APP_API}/miejsca`, {
+   const getMovies = async () => {
+    const records = await fetch(`${process.env.REACT_APP_API}/movies`, {
       method: 'GET',
       credentials: 'include',
-      withCredentials: true,
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
@@ -51,7 +60,7 @@ const Home = () => {
   }
 
   useEffect(() => {
-    getPlaces();
+    getMovies();
   }, []);
 
    // useEffect(() => {

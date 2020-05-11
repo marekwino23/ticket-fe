@@ -28,25 +28,25 @@
 }
 
 .list__item--1 {
-    background-image: linear-gradient(to right, rgba(25,180,255, .4), rgba(25,180,160, .2)), url('../../Batman.jpg');
+    background-image: linear-gradient(to right, rgba(25,180,255, .4), rgba(25,180,160, .2)), url('../../batman.jpg');
 }
 
 .list__item--2 {
-    background-image: url('../../Superman.jpg');
+    background-image: linear-gradient(to right, rgba(25,180,255, .4), rgba(25,180,160, .2)), url('../../superman.jpg');
 }
 
 .list__item--3 {
-    background-image: url('../../spider.jpg');
+    background-image: linear-gradient(to right, rgba(25,180,255, .4), rgba(25,180,160, .2)), url('../../spiderman.jpg');
 }
 
 .list__item--4 {
-    background-image: url('../../xmen.jpg');
+    background-image: linear-gradient(to right, rgba(25,180,255, .4), rgba(25,180,160, .2)), url('../../xmen.jpg');
 }
 
 .list__item--5 {
-    background-image: url('../../avegers.jpg');
+    background-image: linear-gradient(to right, rgba(25,180,255, .4), rgba(25,180,160, .2)), url('../../avengers.jpg');
 }
 
 .list__item--6 {
-    background-image: url('../../avatar.jpg');
+    background-image: linear-gradient(to right, rgba(25,180,255, .4), rgba(25,180,160, .2)), url('../../avatar.jpg');
 }

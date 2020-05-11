@@ -26,12 +26,14 @@ const onChange = ({ target }) => {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
       },
+      credentials: 'include',
       body: JSON.stringify({ email, password })
     });
     setLoading(false);
-    console.log('res: ', res.headers);
+    console.log('res: ', res);
     if(res.status > 300 ) return;
-    history.push('/home');
+    console.log(sessionStorage);
+    history.push('/', { loggedIn: true });
     } catch(error) {
       setError(error.message);
     }

@@ -1,0 +1,51 @@
+.detail {
+    max-width: 120rem;
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+figure {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+figure caption {
+    color: whitesmoke;
+    position: absolute;
+    font-size: 3rem;
+    font-weight: 300;
+    left: 50%;
+    bottom: 1rem;
+    transform: translate(-50%, -50%);
+    background-color: rgba(25, 25, 25,.6);
+    padding: 2rem 4rem;
+    box-shadow: 1px -2px 5px #cccccc;
+    text-shadow: 1px -1px 2px whitesmoke;
+}
+
+.detail__btn--back {
+    border: none;
+    padding: 1rem 2rem;
+    background-color:#349bf3;
+    box-shadow: 1px 2px 10px rgba(25, 25, 25, .4);
+    display: flex;
+    color: whitesmoke;
+    align-self: flex-start;
+}
+
+.detail__btn--back:hover {
+    cursor: pointer;
+}
+
+.detail__btn--back::before {
+    content: '<';
+    display: block;
+    position: absolute;
+    left: .5rem;
+
+    color: whitesmoke;
+}

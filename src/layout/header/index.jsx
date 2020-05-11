@@ -1,21 +1,34 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import obrazek from '../../home-solid.svg';
 import styled from 'styled-components';
 
 
-
 const Header = () => {
-    const loggedIn = sessionStorage.getItem('loggedIn');
+    const [loggedIn, setLoggedIn] = useState(false);
+    const {state} = useLocation();
+    useEffect(() => {
+        if(!state) return;
+        console.log('loggedIN');
+        setLoggedIn(state.loggedIn ? true : false);
+        sessionStorage.setItem('loggedIn', state.loggedIn);
+
+        return () => sessionStorage.removeItem('loggedIn');
+    },[state]);
+    const onClick = () => {
+        sessionStorage.removeItem('loggedIn');
+        setLoggedIn(false);
+    }
+    console.log('loggedIn: ', loggedIn);
     return (
         <nav>
             <List>
-                <li><StyledLink> <img class="home" src={obrazek}></img> </StyledLink></li>
-                <li> <StyledLink to="/home" > Sprawdz Repertuar </StyledLink> </li>
+                <li><StyledLink to="/"><img class="home" src={obrazek}></img> </StyledLink></li>
+                <li> <StyledLink to="/" > Sprawdz Repertuar </StyledLink> </li>
                 <li> <StyledLink to="/about" > Zarezerwuj Bilet </StyledLink> </li>
                 <li> <StyledLink to="/contact" > Panel Lojalnościowy </StyledLink> </li>
             { !loggedIn &&  <ListItem><StyledLink to="/login" > Zaloguj sie </StyledLink> </ListItem>}
-            { loggedIn && <ListItem><StyledLink to="/logout" > Wyloguj sie </StyledLink> </ListItem> }
+            { loggedIn && <ListItem><StyledLink to="/login" onClick={onClick} > Wyloguj sie </StyledLink> </ListItem> }
             { !loggedIn && <ListItem><StyledLink to="/register" > Zarejestruj sie </StyledLink></ListItem>}
            </List>
         </nav>

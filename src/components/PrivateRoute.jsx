@@ -13,7 +13,6 @@ const PrivateRoute = ({ path, component: Component }) => {
                 'Content-Type': 'application/json'
             },
             credentials: 'include',
-            withCredentials: true,
             });
 
             if(res.status > 300) setLoggedIn(false);

@@ -37,7 +37,6 @@ const Register = () =>{
       data.status === 'success' && cogoToast.success('user was successfully creaed. You can now log in', {
         timeout: 500
       });
-      sessionStorage.setItem('loggedIn', true);
       history.push('/login');
       } catch(error) {
         setError(error.message);

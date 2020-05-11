@@ -7,6 +7,7 @@ import About from './pages/About';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Header from './layout/header';
+import Detail from './pages/detail';
 import logo from './logo.svg';
 import './App.css'
 
@@ -19,7 +20,8 @@ function App() {
       <Switch>
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
-        <PrivateRoute path="/home" component={Home} />
+        <PrivateRoute exact path="/" component={Home} />
+        <PrivateRoute path="/:id" component={Detail} />
         <PrivateRoute path="/about" component={About} />
         <PrivateRoute path="/contact" component={Contact} />
       </Switch>
