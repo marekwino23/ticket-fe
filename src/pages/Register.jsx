@@ -50,7 +50,7 @@ const Register = () =>{
    return(
     <div>
     <form onSubmit={onSubmit}>
-    <label>Podaj Nickname:
+    <label>Podaj Imie:
        <input name="name" value={name} onChange={onChange} type="text"/>
       </label>
       <label>Podaj Emaila:
