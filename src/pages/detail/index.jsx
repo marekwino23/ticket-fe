@@ -4,8 +4,8 @@ import './index.css';
 
 const Detail = () => {
     const history = useHistory();
-    const { state } = useLocation();
     const onClick = () => history.goBack();
+    const { state } = useLocation();
     return (
     <div className="detail">
         <button class="detail__btn--back" onClick={onClick}>Back</button>

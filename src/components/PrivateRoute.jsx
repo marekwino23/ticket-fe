@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, Redirect, Route } from 'react-router-dom'
 
-const PrivateRoute = ({ path, component: Component }) => {
+const PrivateRoute = ({ exact, path, component: Component }) => {
     const verifyToken = async () => {
         let res;
         try {
@@ -22,17 +22,16 @@ const PrivateRoute = ({ path, component: Component }) => {
         }
     };
 
-    const location = useLocation();
-    const [loggedIn, setLoggedIn] = useState(true);
+    const [loggedIn, setLoggedIn] = useState(sessionStorage.getItem('loggedIn'));
 
     // useEffect(() => {
     //     verifyToken();
-    // }, [location]);
+    // });
 
     console.log('path: ', path, loggedIn);
 
     return (
-        loggedIn ? <Route path={path} component={Component} /> : <Redirect to="/login" />
+        loggedIn ? <Route exact path={path} component={Component} /> : <Redirect to="/login" />
     )
 }
 

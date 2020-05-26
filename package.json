@@ -8,16 +8,27 @@
     "@testing-library/user-event": "^7.2.1",
     "cogo-toast": "^4.2.3",
     "react": "^16.13.1",
+    "react-big-calendar": "^0.24.6",
+    "react-calendar": "^3.1.0",
+    "react-clock": "^2.4.0",
+    "react-compound-timer": "^1.2.0",
+    "react-date-picker": "^8.0.1",
     "react-dom": "^16.13.1",
+    "react-live-clock": "^4.0.5",
+    "react-picky-date-time": "^1.6.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
+    "react-sticky-table": "^5.1.4",
+    "react-table": "^7.1.0",
+    "simple-react-calendar": "^2.2.1",
     "styled-components": "^5.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "react-scripts build && netlify deploy && netlify deploy --prod"
   },
   "eslintConfig": {
     "extends": "react-app"

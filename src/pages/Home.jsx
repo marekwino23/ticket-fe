@@ -77,7 +77,6 @@ const Home = () => {
       <img className="search" src={obrazek}></img> 
     </form>
     <List data={filterMovies} />
-    {/* <List data={movies} /> */}
   </div>
   )
 }

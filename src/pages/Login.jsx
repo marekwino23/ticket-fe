@@ -32,8 +32,9 @@ const onChange = ({ target }) => {
     setLoading(false);
     console.log('res: ', res);
     if(res.status > 300 ) return;
+    sessionStorage.setItem('loggedIn', true);
     console.log(sessionStorage);
-    history.push('/', { loggedIn: true });
+    history.push('/');
     } catch(error) {
       setError(error.message);
     }

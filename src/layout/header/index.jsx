@@ -6,15 +6,17 @@ import styled from 'styled-components';
 
 const Header = () => {
     const [loggedIn, setLoggedIn] = useState(false);
-    const {state} = useLocation();
+    // const {state} = useLocation();
     useEffect(() => {
-        if(!state) return;
-        console.log('loggedIN');
-        setLoggedIn(state.loggedIn ? true : false);
-        sessionStorage.setItem('loggedIn', state.loggedIn);
-
-        return () => sessionStorage.removeItem('loggedIn');
-    },[state]);
+        setLoggedIn(sessionStorage.getItem('loggedIn'))
+    });
+    // useEffect(() => {
+    //     if(sessionStorage.getItem('loggedIn') === loggedIn) return;
+    //     // if(!state) return;
+    //     // console.log('location state: ', state);
+    //     setLoggedIn(sessionStorage.getItem('loggedIn') ? true : false);
+    //     // sessionStorage.setItem('loggedIn', state.loggedIn);
+    // },[loggedIn]);
     const onClick = () => {
         sessionStorage.removeItem('loggedIn');
         setLoggedIn(false);
@@ -24,9 +26,10 @@ const Header = () => {
         <nav>
             <List>
                 <li><StyledLink to="/"><img class="home" src={obrazek}></img> </StyledLink></li>
-                <li> <StyledLink to="/" > Sprawdz Repertuar </StyledLink> </li>
-                <li> <StyledLink to="/about" > Zarezerwuj Bilet </StyledLink> </li>
-                <li> <StyledLink to="/contact" > Panel Lojalnościowy </StyledLink> </li>
+                { loggedIn && <li> <StyledLink to="/" > Sprawdz Repertuar </StyledLink> </li>}
+                { loggedIn && <li> <StyledLink to="/about" > Zarezerwuj Bilet </StyledLink> </li>}
+               { loggedIn && <li> <StyledLink to="/contact" > Panel Użytkownika </StyledLink> </li>}
+               <br></br>
             { !loggedIn &&  <ListItem><StyledLink to="/login" > Zaloguj sie </StyledLink> </ListItem>}
             { loggedIn && <ListItem><StyledLink to="/login" onClick={onClick} > Wyloguj sie </StyledLink> </ListItem> }
             { !loggedIn && <ListItem><StyledLink to="/register" > Zarejestruj sie </StyledLink></ListItem>}
