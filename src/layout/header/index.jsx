@@ -6,17 +6,12 @@ import styled from 'styled-components';
 
 const Header = () => {
     const [loggedIn, setLoggedIn] = useState(false);
-    // const {state} = useLocation();
+    const location = useLocation();
     useEffect(() => {
-        setLoggedIn(sessionStorage.getItem('loggedIn'))
-    });
-    // useEffect(() => {
-    //     if(sessionStorage.getItem('loggedIn') === loggedIn) return;
-    //     // if(!state) return;
-    //     // console.log('location state: ', state);
-    //     setLoggedIn(sessionStorage.getItem('loggedIn') ? true : false);
-    //     // sessionStorage.setItem('loggedIn', state.loggedIn);
-    // },[loggedIn]);
+        const lg = sessionStorage.getItem('loggedIn');
+        if(loggedIn == lg) return;
+        setLoggedIn(lg);
+    },[location]);
     const onClick = () => {
         sessionStorage.removeItem('loggedIn');
         setLoggedIn(false);

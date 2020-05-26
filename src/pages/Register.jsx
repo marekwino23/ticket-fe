@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import cogoToast from 'cogo-toast';
+import styled from 'styled-components';
+
 
 const Register = () =>{   
   const history = useHistory();
@@ -48,7 +50,7 @@ const Register = () =>{
    });
     if(loading && !error) return <div>loading...</div>
    return(
-    <div>
+    <Container>
     <form onSubmit={onSubmit}>
     <label>Podaj Imie i Nazwisko:
        <input name="name" value={name} onChange={onChange} type="text"/>
@@ -60,12 +62,40 @@ const Register = () =>{
       <label>Podaj Hasło:
       <input name="password" value={password} onChange={onChange} type="text"/>
       </label>
-      <button>Register</button>
+      <Btn>Register</Btn>
     </form>
-        </div>
+        </Container>
     
      )
     }
+
+    const Container = styled.div` 
+  form {
+    width: 40rem;
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+    label, button {
+      display: block;
+      text-align: center;
+      width: 100%;
+    }
+    label input {
+      width: 100%;
+    }
+    button {
+      margin-top: 1rem;
+    }
+  }
+`
+
+    const Btn = styled.button`   
+  border: none;
+  padding: 1rem 2rem;
+  background-color: #349bf3;
+  box-shadow: 1px 2px 10px rgba(25,25,25,.4);
+  display: flex;
+  color: #f5f5f5;`
+
     export default Register;
 
 
