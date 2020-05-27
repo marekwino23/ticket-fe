@@ -11,7 +11,7 @@ const Header = () => {
         const lg = sessionStorage.getItem('loggedIn');
         if(loggedIn == lg) return;
         setLoggedIn(lg);
-        () => sessionStorage.clear();
+        return () => sessionStorage.clear();
     },[location]);
     const onClick = () => {
         sessionStorage.removeItem('loggedIn');
