@@ -11,19 +11,20 @@ const Header = () => {
         const lg = sessionStorage.getItem('loggedIn');
         if(loggedIn == lg) return;
         setLoggedIn(lg);
+        () => sessionStorage.clear();
     },[location]);
     const onClick = () => {
         sessionStorage.removeItem('loggedIn');
         setLoggedIn(false);
     }
-    console.log('loggedIn: ', loggedIn);
+    const user = sessionStorage.getItem('user');
     return (
         <nav>
             <List>
-                <li><StyledLink to="/"><img class="home" src={obrazek}></img> </StyledLink></li>
+                <li><StyledLink to="/"><img className="home" src={obrazek}></img> </StyledLink></li>
                 { loggedIn && <li> <StyledLink to="/" > Sprawdz Repertuar </StyledLink> </li>}
                 { loggedIn && <li> <StyledLink to="/about" > Zarezerwuj Bilet </StyledLink> </li>}
-               { loggedIn && <li> <StyledLink to="/contact" > Panel Użytkownika </StyledLink> </li>}
+               { loggedIn && <li> <StyledLink to="/contact" > Panel Użytkownika: {user.name} </StyledLink> </li>}
                <br></br>
             { !loggedIn &&  <ListItem><StyledLink to="/login" > Zaloguj sie </StyledLink> </ListItem>}
             { loggedIn && <ListItem><StyledLink to="/login" onClick={onClick} > Wyloguj sie </StyledLink> </ListItem> }

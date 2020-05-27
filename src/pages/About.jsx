@@ -1,10 +1,11 @@
 import React, { useReducer, useCallback, useState } from 'react';
 import Calendar from 'react-calendar';
-// import DateTimePicker from 'react-datetime-picker';
-import { Switch, Route } from 'react-router-dom';
+import TimePicker from 'react-time-picker'
 import styled from 'styled-components';
 import { useTable } from "react-table";
 import '../index.css';
+import cogoToast from 'cogo-toast';
+import {Btn, Container} from '../styled';
 
 const seats = [
     { id: 1, name: 'AA' , booked: false }, 
@@ -72,6 +73,7 @@ const Seat = React.memo(({ booked, dir, onClick, seat }) => (
 
 const About = () =>{
     const [date, setDate] = useState(new Date())
+    const [hour,setHour] = useState()
     const [booked, setBooked] = useState([]);
     const onClick = useCallback(el => {
         console.log('el: ', el);
@@ -83,21 +85,28 @@ const About = () =>{
     const onChange = (date) => {
         setDate(date);   
     };
+    const onSpin = (hour) => {
+        setHour(hour);   
+    };
+
     const onLoad = () => {
-        alert("Dziękuje za rezerwacje:" + date)  
+        cogoToast.success(`Dziękuje za rezerwacji miesc ${booked.join(',')} dnia:  ${date} o godz: ${hour}`);
         };
 
  return(
-<div>
+<Container>
     <h2> WYBIERZ TERMIN  </h2>
     <StyledCalendar
     onChange={onChange}
     value={date}
     />
-    <StyledDate>{date.toLocaleDateString()} {date.toLocaleTimeString()}</StyledDate>
+    <StyledDate>{date.toLocaleDateString()}</StyledDate>
     {/* <form onSubmit={onLoad}> */}
-    <input type="button" onClick={onLoad} name="name"/>
     {/* <input value={check} type="checkbox" name="check" onChange={() => setCheck(ch => !ch)} /> */}
+    <TimePicker
+    onChange={onSpin}
+    value={hour} />
+    <Btn onClick={onLoad}>wyslij</Btn>
     <CinemaSeats>
         <div className="left">
             {seats.map(seat => <Seat key={`left_${seat.id}${seat.name}`} seat={seat} onClick={onClick} dir="left" booked={booked} />)}
@@ -107,7 +116,7 @@ const About = () =>{
             {seats.map(seat => <Seat key={`right_${seat.id}${seat.name}`} seat={seat} onClick={onClick} dir="right" booked={booked} />)}
         </div>
     </CinemaSeats>
-    </div>  
+    </Container>  
  )
 }
 

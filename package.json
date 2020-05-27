@@ -20,6 +20,7 @@
     "react-scripts": "3.4.1",
     "react-sticky-table": "^5.1.4",
     "react-table": "^7.1.0",
+    "react-time-picker": "^4.0.1",
     "simple-react-calendar": "^2.2.1",
     "styled-components": "^5.1.0"
   },
@@ -28,7 +29,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "react-scripts build && netlify deploy && netlify deploy --prod"
+    "deploy": "react-scripts build && netlify deploy --dir=build && netlify deploy --dir=build --prod"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -1,26 +1,53 @@
-import React, { useState } from 'react';
+import React, { useReducer, useState } from 'react';
 import cogoToast from 'cogo-toast';
 import { useHistory } from 'react-router-dom';
-import styled from 'styled-components';
+import {Btn ,Container, Form} from '../styled';
+
+const initial = { loading: false, error: '' };
+
+const appReducer = (state = initial, action) => {
+  switch(action.type) {
+    case 'LOADING': return {...state, loading: action.payload}
+    case 'ERROR': return {...state, error: action.payload}
+    default: return state;
+  }
+}
+
+const validateFields = (fields) => {
+  const error = {};
+  Object.keys(fields).forEach(k => {
+    if(fields[k] === '') error[fields[k]] = 'is required'
+  });
+  return error;
+}
 
 const Login = () =>{   
 
+  const [state, dispatch] = useReducer(appReducer);
+  const [error, setError] = useState({ email: '', password: ''});
+
 const [email, setEmail] = useState('');
 const [password, setPassword] = useState('');
-const [loading, setLoading] = useState(false);
-const [error, setError] = useState('');
 
 const history = useHistory();
 
 const onChange = ({ target }) => {
+  if(!target.value) setError(prev => ({...prev, [target.name]: 'field is required' }));
   target.name === "email" ? setEmail(target.value) : setPassword(target.value);
 }
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    // const v = validateFields({ email, password });
+    // console.log('v: ', v);
+    // if(v) {
+    //   setError(v);
+    //   return;
+    // } 
+
     let res;
     try {
-      setLoading(true);
+      dispatch({ type: 'LOADING', payload: true });
     res = await fetch(`${process.env.REACT_APP_API}/login`, {
       method: 'POST',
       headers: {
@@ -30,59 +57,38 @@ const onChange = ({ target }) => {
       credentials: 'include',
       body: JSON.stringify({ email, password })
     });
-    setLoading(false);
+    dispatch({ type: 'LOADING', payload: false });
     console.log('res: ', res);
     if(res.status > 300 ) return;
     sessionStorage.setItem('loggedIn', true);
+    const data = await res.json();
+    sessionStorage.setItem('user', data.user)
     history.push('/');
     } catch(error) {
-      setError(error.message);
+      dispatch({ type: 'ERROR', payload: true });
     }
   }
 
-  if(loading && !error) return <div>loading...</div>
+  if(state && state.loading && !state.error) return <div>loading...</div>
+  console.log('error: ', error);
+  
  return(
 <Container>
-<form onSubmit={onSubmit}>
+<Form onSubmit={onSubmit}>
   <h1>Logowanie</h1>
   <label> Podaj Emaila:
   <input name="email" value={email} onChange={onChange} type="text"/>
+  {!email && error.email}
   </label>
   <label> Podaj Hasło:
-  <input name="password" value={password} onChange={onChange} type="text"/>
+  <input name="password" value={password} onChange={onChange} type="password"/>
+  {!password && error.password}
   </label>
-  <Btn>Log in</Btn>
-</form>
+  <Btn disabled={!Object.values(error).includes('') || !email || !password}>Log in</Btn>
+</Form>
     </Container>
 
  )
 }
-
-const Container = styled.div` 
-  form {
-    width: 40rem;
-    margin: 0 auto;
-    padding: 1rem 1.5rem;
-    label, button {
-      display: block;
-      text-align: center;
-      width: 100%;
-    }
-    label input {
-      width: 100%;
-    }
-    button {
-      margin-top: 1rem;
-    }
-  }
-`
-
-const Btn = styled.button`   
-  border: none;
-  padding: 1rem 2rem;
-  background-color: #349bf3;
-  box-shadow: 1px 2px 10px rgba(25,25,25,.4);
-  display: flex;
-  color: #f5f5f5;`
 
 export default Login;
