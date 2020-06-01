@@ -2,6 +2,7 @@ import React, { useReducer, useState } from 'react';
 import cogoToast from 'cogo-toast';
 import { useHistory } from 'react-router-dom';
 import {Btn ,Container, Form} from '../styled';
+import logo from '../logo.svg';
 
 const initial = { loading: false, error: '' };
 
@@ -62,14 +63,14 @@ const onChange = ({ target }) => {
     if(res.status > 300 ) return;
     sessionStorage.setItem('loggedIn', true);
     const data = await res.json();
-    sessionStorage.setItem('user', data.user)
+    sessionStorage.setItem('user', JSON.stringify(data.user));
     history.push('/');
     } catch(error) {
       dispatch({ type: 'ERROR', payload: true });
     }
   }
 
-  if(state && state.loading && !state.error) return <div>loading...</div>
+  if(state && state.loading && !state.error) return <img src={logo} className="App-logo" alt="logo" />
   console.log('error: ', error);
   
  return(

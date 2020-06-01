@@ -1,18 +1,22 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Switch, Route } from 'react-router-dom';
 import PrivateRoute from './components/PrivateRoute';
-import Contact from './pages/Contact';
 import Home from './pages/Home';
 import About from './pages/About';
+import Profile from './pages/profile';
+import Payments from './components/payments';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Header from './layout/header';
 import Detail from './pages/detail';
-import logo from './logo.svg';
 import './App.css'
 
 
 function App() {
+
+  useEffect(() => {
+    return () => sessionStorage.clear();
+  })
 
   return (
     <div className="App">
@@ -22,8 +26,8 @@ function App() {
         <Route exact path="/register" component={Register} />
         <PrivateRoute exact path="/" component={Home} />
         <PrivateRoute exact path="/about" component={About} />
+        <PrivateRoute exact path="/profile" component={Profile} />
         <PrivateRoute exact path="/:id" component={Detail} />
-        <PrivateRoute exact path="/contact" component={Contact} />
       </Switch>
       {/* <p> <Main/> </p>
       <header className="App-header">
