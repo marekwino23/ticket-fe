@@ -1,12 +1,12 @@
-import React, { useReducer, useCallback, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import Calendar from 'react-calendar';
 import TimePicker from 'react-time-picker'
 import styled from 'styled-components';
-import { Link, useLocation, } from 'react-router-dom';
-import { useTable } from "react-table";
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import '../index.css';
 import cogoToast from 'cogo-toast';
 import {Btn, Container} from '../styled';
+import kino from "../cinema-158437_960_720.png"
 
 const seats = [
     { id: 1, name: 'AA' , booked: false }, 
@@ -76,6 +76,8 @@ const About = () =>{
     const [date, setDate] = useState(new Date())
     const [hour,setHour] = useState()
     const [booked, setBooked] = useState([]);
+    const {state: { movie }} = useLocation();
+    const history = useHistory();
     const onClick = useCallback(el => {
         console.log('el: ', el);
         setBooked(b => [...b, el]);
@@ -92,11 +94,18 @@ const About = () =>{
 
     const onLoad = () => {
         cogoToast.success(`Dziękuje za rezerwacji miesc ${booked.join(',')} dnia:  ${date} o godz: ${hour}`);
-        };
+        history.push('/pay', {
+            product: {
+                name: booked.join(','),
+                description: 'normal ticket',
+                price: 10 * booked.length
+            }
+        });
+    };
 
  return(
 <Container>
-    <h2> WYBIERZ TERMIN  </h2>
+    <h2> WYBIERZ TERMIN dla {movie.name}</h2>
     <StyledCalendar
     onChange={onChange}
     value={date}
@@ -108,6 +117,10 @@ const About = () =>{
     onChange={onSpin}
     value={hour} />
     <Btn onClick={onLoad}>wyslij</Btn>
+    <div>
+    <img className="movie" style={{width:"500px",height:"200px"}} src={movie.src} alt="ekran"/>
+    <img style={{width:"500px",height:"200px"}} src={kino} alt="ekran"/>
+    </div>
     <CinemaSeats>
         <div className="left">
             {seats.map(seat => <Seat key={`left_${seat.id}${seat.name}`} seat={seat} onClick={onClick} dir="left" booked={booked} />)}
@@ -120,6 +133,17 @@ const About = () =>{
     </Container>  
  )
 }
+
+
+
+const StyledLink = styled(Link)`
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    display: block;
+    &:hover {
+        background-color: #0088ff;
+    }
+`;
 
 const CinemaSeats = styled.div`
     display: flex;

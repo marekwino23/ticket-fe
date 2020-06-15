@@ -56,7 +56,7 @@ const Register = () =>{
        <input name="name" value={name} onChange={onChange} type="text"/>
       </label>
       <label>Podaj Emaila:
-      <input name="email" value={email} onChange={onChange} type="text"/>
+      <input type="email" name="email" value={email} onChange={onChange} />
       </label>
       <br></br>
       <label>Podaj Hasło:

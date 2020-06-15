@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link, useLocation, } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome, faUser } from '@fortawesome/free-solid-svg-icons'
@@ -28,7 +28,7 @@ function useOnClickOutside(ref, handler) {
 const ProfileMenu = ({ setVisible, visible }) => {
     const [loggedIn, setLoggedIn] = useState(false);
     const ref = useRef();
-    useOnClickOutside(ref, () => setVisible(v => !v));
+    useOnClickOutside(ref, () => setVisible(false));
     const onClick = () => {
         sessionStorage.removeItem('loggedIn');
         setLoggedIn(false);
