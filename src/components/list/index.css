@@ -28,11 +28,11 @@
 }
 
 .list__item--1 {
-    background-image: linear-gradient(to right, rgba(25,180,255, .4), rgba(25,180,160, .2)), url('../../batman.jpg');
+    background-image: linear-gradient(to right, rgba(25,180,255, .4), rgba(25,180,160, .2)), url('../../Batman.jpg');
 }
 
 .list__item--2 {
-    background-image: linear-gradient(to right, rgba(25,180,255, .4), rgba(25,180,160, .2)), url('../../superman.jpg');
+    background-image: linear-gradient(to right, rgba(25,180,255, .4), rgba(25,180,160, .2)), url('../../Superman.jpg');
 }
 
 .list__item--3 {
