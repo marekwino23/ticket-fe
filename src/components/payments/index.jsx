@@ -1,7 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React from 'react';
 import { PayPalButton } from "react-paypal-button-v2";
 import { useLocation, } from 'react-router-dom';
-import QRCode from "react-qr-code";
 
 function Product({ product }) {
 

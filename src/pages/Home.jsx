@@ -19,7 +19,6 @@ const movies = [
   {id: 6, name: "Avatar", info: "Czw:12:00-14:00 Nd: 16:00-18:00",  desc: "Hero who bends all elements of nature", src: avatar } ];
 console.log(movies.src)
 const Home = () => {
-    const [data, setData] = useState([]);
     const [term, setTerm] = React.useState('');
 
     const filterMovies =  useMemo(() => {
@@ -48,7 +47,7 @@ const Home = () => {
   <div>
     <form>
       <SearchBar term={term} setTerm={setTerm} />
-      <img className="search" src={obrazek}></img> 
+      <img className="search" alt="obrazek" src={obrazek}></img> 
     </form>
     <List data={filterMovies} />
   </div>

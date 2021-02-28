@@ -26,7 +26,6 @@ function useOnClickOutside(ref, handler) {
   }
 
 const ProfileMenu = ({ setVisible, visible }) => {
-    const [loggedIn, setLoggedIn] = useState(false);
     const ref = useRef();
     useOnClickOutside(ref, () => setVisible(false));
     const onClick = () => {
@@ -73,7 +72,7 @@ const Header = () => {
     const location = useLocation();
     useEffect(() => {
         const lg = sessionStorage.getItem('loggedIn');
-        if(loggedIn == lg) return;
+        if(loggedIn === lg) return;
         setLoggedIn(lg);
     },[location]);
     let user = {};

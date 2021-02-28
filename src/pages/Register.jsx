@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import cogoToast from 'cogo-toast';
 import {Btn ,Container, Form} from '../styled';
@@ -6,11 +6,9 @@ import {Btn ,Container, Form} from '../styled';
 
 const Register = () =>{   
   const history = useHistory();
-  const location = useLocation();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [data, setData] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   

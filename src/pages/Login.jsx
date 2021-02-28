@@ -1,5 +1,4 @@
 import React, { useReducer, useState } from 'react';
-import cogoToast from 'cogo-toast';
 import { useHistory } from 'react-router-dom';
 import {Btn ,Container, Form} from '../styled';
 import logo from '../logo.svg';
@@ -14,13 +13,13 @@ const appReducer = (state = initial, action) => {
   }
 }
 
-const validateFields = (fields) => {
-  const error = {};
-  Object.keys(fields).forEach(k => {
-    if(fields[k] === '') error[fields[k]] = 'is required'
-  });
-  return error;
-}
+// const validateFields = (fields) => {
+//   const error = {};
+//   Object.keys(fields).forEach(k => {
+//     if(fields[k] === '') error[fields[k]] = 'is required'
+//   });
+//   return error;
+// }
 
 const Login = () =>{   
 
