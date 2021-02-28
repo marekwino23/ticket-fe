@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useMemo } from 'react';
-import batman from '../batman.jpg';
+import Batman from '../Batman.jpg';
 import avatar from '../avatar.jpg';
 import avengers from '../avengers.jpg';
 import spiderman from '../spiderman.jpg';
@@ -11,7 +11,7 @@ import SearchBar from '../components/SearchBar';
 
 
 const movies = [
-  { id: 1, name: 'Batman', info: "Pon:16:00-18:00 Sb: 12:00-14:00", desc: "Batman, z pomocą porucznika Gordona oraz prokuratora Harveya Denta, występuje przeciwko przerażającemu i nieobliczalnemu Jokerowi, który chce pogrążyć Gotham City w chaosie.", src: batman  }, 
+  { id: 1, name: 'Batman', info: "Pon:16:00-18:00 Sb: 12:00-14:00", desc: "Batman, z pomocą porucznika Gordona oraz prokuratora Harveya Denta, występuje przeciwko przerażającemu i nieobliczalnemu Jokerowi, który chce pogrążyć Gotham City w chaosie.", src: Batman  }, 
   { id: 2, name: 'Superman', info: "Wt:15:00-17:00 Nd: 12:00-14:00", desc: "Po latach nieobecności Superman wraca na Ziemię, by ocalić ludzkość i pokrzyżować plany Lexa Luthora.", src: Superman }, 
   { id: 3, name: 'Spiderman', info: "Pon:20:00-22:00 Pt: 10:00-12:00", desc: "Hero moving like spider", src: spiderman }, 
   { id: 4, name : 'X-men',  info: "Śr:14:00-16:00 Sb: 16:00-19:00", desc: "Hero having sharp claves", src: xmen }, 
