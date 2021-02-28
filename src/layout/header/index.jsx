@@ -30,7 +30,6 @@ const ProfileMenu = ({ setVisible, visible }) => {
     useOnClickOutside(ref, () => setVisible(false));
     const onClick = () => {
         sessionStorage.removeItem('loggedIn');
-        setLoggedIn(false);
     }
  
     return (

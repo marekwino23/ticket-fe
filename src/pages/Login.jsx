@@ -22,7 +22,6 @@ const appReducer = (state = initial, action) => {
 // }
 
 const Login = () =>{   
-
   const [state, dispatch] = useReducer(appReducer);
   const [error, setError] = useState({ email: '', password: ''});
 
@@ -38,13 +37,6 @@ const onChange = ({ target }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    // const v = validateFields({ email, password });
-    // console.log('v: ', v);
-    // if(v) {
-    //   setError(v);
-    //   return;
-    // } 
-
     let res;
     try {
       dispatch({ type: 'LOADING', payload: true });
